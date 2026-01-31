@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from google import genai
@@ -27,7 +26,9 @@ def run_scheduler():
     # schedule.every(10).minutes.do(notification.testing_function)
     
     # schedule.every().day.at("21:32").do(news.get_news_data)
-    schedule.every().day.at("21:25").do(reddit_api.reddit_api)
+    # schedule.every().day.at("21:25").do(reddit_api.reddit_api)
+    schedule.every(10).sunday.at("02:00").do(news.get_news_data)
+    schedule.every(10).sunday.at("03:00").do(reddit_api.reddit_api)
     
     # schedule.every(10).monday.at("02:00").do(notification.testing_function)
     
